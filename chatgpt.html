@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle: ChatGPT</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body data-theme="light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">⬅️ Volver a Inicio</a> 
+            
+            <button class="btn btn-outline-light me-3" id="theme-toggle">
+                ☀️ Modo Claro
+            </button>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html#historia">Historia</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="chatgpt.html">ChatGPT (Actual)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="midjourney.html">Midjourney</a></li>
+                    <li class="nav-item"><a class="nav-link" href="copilot.html">GitHub Copilot</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="container mt-5">
+        <section class="py-5">
+            <h1 class="text-center mb-4 display-3 text-primary">ChatGPT: El Maestro del Lenguaje</h1>
+            <p class="lead text-center mb-5">Un modelo de inteligencia artificial conversacional desarrollado por **OpenAI**, capaz de generar texto coherente y contextualizado.</p>
+            
+            <div class="row mb-5 align-items-center">
+                <div class="col-md-7">
+                    <h2>Mecanismo de Funcionamiento: El Transformer</h2>
+                    <p>ChatGPT se basa en la arquitectura **Transformer**, un tipo de red neuronal que permite al modelo procesar secuencias de datos (como palabras) y dar importancia a las partes más relevantes del texto de entrada. Utiliza el **Aprendizaje No Supervisado** para predecir la siguiente palabra, lo que le confiere su fluidez.</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">**Modelo Base:** GPT (Generative Pre-trained Transformer).</li>
+                        <li class="list-group-item">**Ajuste:** Usa el RLHF (Aprendizaje por Refuerzo con Retroalimentación Humana) para mejorar la calidad y seguridad de las respuestas.</li>
+                    </ul>
+                </div>
+                <div class="col-md-5 text-center">
+                    <img src="imagenes/descarga.png" class="img-fluid rounded shadow" alt="Diagrama de funcionamiento de GPT">
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <h3>Usos Prácticos y Productividad</h3>
+                    <p>ChatGPT ha revolucionado la productividad en múltiples campos:</p>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-success">**Marketing:** Creación de eslóganes, contenido para redes sociales y borradores de artículos.</li>
+                        <li class="list-group-item list-group-item-success">**Servicio al Cliente:** Automatización de respuestas comunes a través de chatbots avanzados.</li>
+                        <li class="list-group-item list-group-item-success">**Programación:** Generación de snippets de código, explicación de funciones y depuración.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3>Desafíos y Limitaciones</h3>
+                    <p>A pesar de su poder, los modelos de lenguaje tienen limitaciones conocidas:</p>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-danger">**Alucinaciones:** Genera información falsa o inventada con gran confianza.</li>
+                        <li class="list-group-item list-group-item-danger">**Ventana de Contexto:** Olvida información de conversaciones muy largas.</li>
+                        <li class="list-group-item list-group-item-danger">**Datos de Entrenamiento:** Su conocimiento está limitado a la fecha de corte de sus datos.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <a href="index.html" class="btn btn-primary btn-lg mt-5 d-block">Volver a la Página Principal</a>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p class="mb-0">&copy; 2024 Detalle de Herramienta IA.</p>
+    </footer>
+    
+    <script>
+        const body = document.body;
+        const toggleButton = document.getElementById('theme-toggle');
+
+        // 1. Cargar la preferencia guardada al inicio
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        
+        // Aplicar el tema al cargar la página
+        body.setAttribute('data-theme', savedTheme);
+        updateButtonText(savedTheme);
+
+        // 2. Función para alternar el tema al hacer clic
+        function toggleTheme() {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme); // Guardar la preferencia
+            updateButtonText(newTheme);
+        }
+
+        // 3. Función para actualizar el texto y el estilo del botón
+        function updateButtonText(theme) {
+            if (theme === 'dark') {
+                toggleButton.innerHTML = '🌙 Modo Oscuro';
+                toggleButton.classList.remove('btn-outline-light');
+                toggleButton.classList.add('btn-outline-warning');
+            } else {
+                toggleButton.innerHTML = '☀️ Modo Claro';
+                toggleButton.classList.remove('btn-outline-warning');
+                toggleButton.classList.add('btn-outline-light');
+            }
+        }
+
+        // Escuchar el clic del botón
+        toggleButton.addEventListener('click', toggleTheme);
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
